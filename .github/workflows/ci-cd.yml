@@ -22,10 +22,10 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+        run: echo "PYTHONPATH=." >> $GITHUB_ENV
 
       - name: Run tests
-        run: pytest app/tests
+        run: python -m pytest tests
 
       - name: Build Docker image
         run: docker build -t cicd-demo .
@@ -33,5 +33,5 @@ jobs:
       - name: Run container & test
         run: |
           docker run -d -p 5000:5000 cicd-demo
-          sleep 5
+          sleep 8
           curl --fail http://localhost:5000/health
