@@ -25,7 +25,7 @@ jobs:
         run: echo "PYTHONPATH=." >> $GITHUB_ENV
 
       - name: Run tests
-        run: python -m pytest app/tests
+        run: python -m pytest tests
 
       - name: Build Docker image
         run: docker build -t cicd-demo .
