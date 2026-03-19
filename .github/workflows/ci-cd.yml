@@ -38,4 +38,5 @@ jobs:
             curl http://localhost:5000/health && exit 0
           done
           echo "App failed to start"
+          docker logs $(docker ps -aq | head -1)
           exit 1
